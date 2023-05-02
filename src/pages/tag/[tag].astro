@@ -1,0 +1,17 @@
+---
+export async function getStaticPaths() {
+	return [
+		{
+			params:{tag:"test1"},
+			props:{name:"Test1"}
+		}
+		,
+		{
+			params:{tag:"test2"},
+			props:{name:"Test2"}
+		}
+	]
+}
+const {tag} = Astro.params
+---
+{tag}
