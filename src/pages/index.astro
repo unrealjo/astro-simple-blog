@@ -1,7 +1,33 @@
 ---
+import { getCollection } from "astro:content";
 import Main from "../layouts/Main.astro";
+import { Image } from "@astrojs/image/components";
+
+const posts = await getCollection("posts");
 ---
 
 <Main title="Simple Blog" generator="v1.0.0">
-  <h1>Welcome to my blog</h1>
+  <div class="row row-cols-1 row-cols-xl-3 gap-4">
+    {
+      posts.map((post) => (
+        <div class="col">
+          <div class="card h-100 text-center shadow bg-body-tertiary rounded ">
+            <Image
+              class="card-img-top w-100"
+              src={post.data.image ?? ""}
+              alt={`${post.slug} image`}
+              width={350}
+              height={300}
+            />
+            <div class="card-body">
+              <h5 class="card-title">{post.data.title}</h5>
+              <a href={`/posts/${post.slug}`} class="btn btn-primary">
+                read more
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </Main>
