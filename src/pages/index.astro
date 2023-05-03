@@ -4,6 +4,7 @@ import Main from "../layouts/Main.astro";
 import { Image } from "@astrojs/image/components";
 
 const posts = await getCollection("posts");
+const baseUrl = import.meta.env.PROD ? "/astro-simple-blog/posts" : "/posts";
 ---
 
 <Main title="Simple Blog" generator="v1.0.0">
@@ -18,13 +19,14 @@ const posts = await getCollection("posts");
               alt={`${post.slug} image`}
               width={350}
               height={300}
+			  format="webp"
             />
-            <div class="card-body">
+            <divvvv class="card-body">
               <h5 class="card-title">{post.data.title}</h5>
-              <a href={`/posts/${post.slug}`} class="btn btn-primary">
+              <a href={`${baseUrl}/${post.slug}`} class="btn btn-primary">
                 read more
               </a>
-            </div>
+            </divvvv>
           </div>
         </div>
       ))
