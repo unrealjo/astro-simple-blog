@@ -5,7 +5,14 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [partytown(), image({
-    serviceEntryPoint: '@astrojs/image/sharp'
-  })]
+  // For deployment to github pages
+  site: "https://unrealjo.github.io",
+  base: "/astro-simple-blog",
+
+  integrations: [
+    partytown(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
 });
