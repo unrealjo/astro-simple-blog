@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Main from "../../layouts/Main.astro";
+import { Image } from "@astrojs/image/components";
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Main title="Simple Blog" generator="v1.0.0">
+  <h1 class="text-center mt-3">{entry.data.title}</h1>
+  <div class="d-flex align-items-center justify-content-center py-3 w-100">
+    <Image
+      src={entry.data.image}
+      alt={`${entry.slug} image`}
+      width={600}
+      height={400}
+      format="avif"
+    />
+  </div>
+  <article class="container fs-5 fw-normal text-body">
+    <Content />
+  </article>
+</Main>
