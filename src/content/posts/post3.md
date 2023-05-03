@@ -1,6 +1,6 @@
 ---
 title : "Et placeat reprehenderit sapiente atque quidem itaque ducimus quibusdam."
-image : "/src/images/post3.png"
+image : "/images/post3.png"
 tags :
   - test
 ---

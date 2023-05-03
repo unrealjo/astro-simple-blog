@@ -1,6 +1,6 @@
 ---
 title : "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
-image : "/src/images/post2.png"
+image : "/images/post2.png"
 tags :
   - demo
 ---
